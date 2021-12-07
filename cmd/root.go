@@ -25,8 +25,8 @@ import (
 	"fmt"
 	"os"
 	"github.com/spf13/cobra"
-
 	"github.com/spf13/viper"
+  "github.com/sho-jp/homete/text"
 )
 
 var cfgFile string
@@ -50,7 +50,7 @@ var rootCmd = &cobra.Command{
     case en:
       fmt.Println("You are Genius!!")
     default:
-      fmt.Println("天才かよ!")
+      fmt.Println(text.Random())
     }
   },
 }
