@@ -1,33 +1,28 @@
 package text
 
-import (
-  // "fmt"
-  "math/rand"
-  "time"
-)
-
 type Text struct {
-  ja string
-  en string
+	Ja string
+	En string
 }
 
-func Random() Text {
-  texts := []Text{
-    {"最高!", "Great!"},
-    {"強す", "Strong!"},
-    {"す!", "Strong!"},
-    {"すぎ!", "Strong!"},
-  }
+func Default() Text {
+	texts := []Text{
+		{"最高", "Great!"},
+		{"強す", "Strong!"},
+		{"す!", "Strong!"},
+		{"すぎ!", "Strong!"},
+	}
 
-  return random(texts)
+	return Random(texts)
 }
 
-func random(texts []Text) Text {
-  text := texts[randomNumber(len(texts))]
-  return text
-}
+func Motto() Text {
+	texts := []Text{
+		{"ほんと最高!", "Very Great!"},
+		{"ほんと強す", "Very Strong!"},
+		{"ほんとす!", "Very Strong!"},
+		{"ほんとすぎ!", "Very Strong!"},
+	}
 
-func randomNumber(i int) int {
-  rand.Seed(time.Now().UnixNano())
-  return rand.Intn(i)
+	return Random(texts)
 }

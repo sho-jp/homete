@@ -24,9 +24,10 @@ package cmd
 import (
 	"fmt"
 	"os"
+
+	"github.com/sho-jp/homete/text"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-  "github.com/sho-jp/homete/text"
 )
 
 var cfgFile string
@@ -35,24 +36,24 @@ var cfgFile string
 var rootCmd = &cobra.Command{
 	Use:   "homete",
 	Short: "Praise you.",
-	Long: "Praise you.",
+	Long:  "Praise you.",
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
-    motto, _ := cmd.Flags().GetBool("motto")
-    en, _ := cmd.Flags().GetBool("en")
+		motto, _ := cmd.Flags().GetBool("motto")
+		en, _ := cmd.Flags().GetBool("en")
 
-    switch {
-    case motto && en:
-      fmt.Println("You are most Genius!")
-    case motto:
-      fmt.Println("まじで天才かよ！")
-    case en:
-      fmt.Println("You are Genius!!")
-    default:
-      fmt.Println(text.Random())
-    }
-  },
+		switch {
+		case motto && en:
+			fmt.Println(text.Motto().En)
+		case motto:
+			fmt.Println(text.Motto().Ja)
+		case en:
+			fmt.Println(text.Default().En)
+		default:
+			fmt.Println(text.Default().Ja)
+		}
+	},
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -74,7 +75,7 @@ func init() {
 	// when this action is called directly.
 	// rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	rootCmd.Flags().BoolP("motto", "m", false, "More praise you.")
-	rootCmd.Flags().BoolP("en", "e", false, "Praise you in english.")
+	rootCmd.Flags().BoolP("en", "e", false, "Praise you in English.")
 }
 
 // initConfig reads in config file and ENV variables if set.
