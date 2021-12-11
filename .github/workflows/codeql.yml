@@ -11,10 +11,8 @@ on:
 
 jobs:
   codeql:
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
-    runs-on: ${{ matrix.os }}
+    name: codeql
+    runs-on: ubuntu-latest
 
     permissions:
       security-events: write
