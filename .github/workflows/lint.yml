@@ -1,0 +1,27 @@
+name: lint
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+
+jobs:
+  golangci:
+    strategy:
+      matrix:
+        go-version: [1.17.x]
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    name: lint
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.29
