@@ -1,0 +1,40 @@
+project_name: homete
+before:
+  hooks:
+    - go mod tidy
+builds:
+  -
+    main: .
+    env:
+      - CGO_ENABLED=0
+archives:
+  - replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+checksum:
+  name_template: "{{ .ProjectName }}_checksums.txt"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+brews:
+  -
+    name: homete
+    tap:
+      owner: sho-jp
+      name: homebrew-tap
+      branch: main
+    url_template: "https://github.com/sho-jp/homete/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    commit_author:
+      name: goreleaserbot
+      email: goreleaser@carlosbecker.com
+    description: "Praise you."
+    test:
+      system "#{bin}/homete help"
+    install: |
+      bin.install "homete"
