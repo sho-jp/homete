@@ -18,8 +18,6 @@ func Default() Text {
 		{"ヤバい！", "It was awesome"},
 	}
 
-	test
-
 	return texts[RandomNumber(len(texts))]
 }
 
