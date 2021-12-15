@@ -27,3 +27,8 @@ $ homete --motto
 $ homete --en
 Great!
 ```
+
+## Pull Requests
+We are looking for words of praise.
+
+Please feel free to send us Pull Requests.
