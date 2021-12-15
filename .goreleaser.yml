@@ -28,7 +28,7 @@ brews:
     tap:
       owner: sho-jp
       name: homebrew-tap
-      branch: main
+      branch: master
     url_template: "https://github.com/sho-jp/homete/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
     commit_author:
       name: goreleaserbot
