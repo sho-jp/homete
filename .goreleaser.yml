@@ -5,6 +5,10 @@ before:
 builds:
   -
     main: .
+    goos:
+      - darwin
+      - linux
+      - windows
     env:
       - CGO_ENABLED=0
 archives:
